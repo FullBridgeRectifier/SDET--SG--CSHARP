@@ -19,6 +19,7 @@ namespace aliexpress_e2e.Framework.PageObjects
 
         public void NavigateToSecondPage()
         {
+
             try
             {
                 IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
@@ -29,12 +30,12 @@ namespace aliexpress_e2e.Framework.PageObjects
             {
                 Assert.Fail("Could not click next page due to not scrolling or button not clickable " + e);
             }
-            
         }
 
         public void ClickProduct()
         {
-            WaitUtilities.WaitForPageToLoad(productSelector);
+            WaitUtilities.ExplicitlyWait(driver, productSelector);
+            WaitUtilities.WaitForPageToLoad(driver, productSelector);
             try
             {
                 driver.FindElement(productSelector).Click();
@@ -43,7 +44,6 @@ namespace aliexpress_e2e.Framework.PageObjects
             {
                 Assert.Fail("Could not click product link verify stacktrace: " + e);
             }
-            
         }
     }
 }

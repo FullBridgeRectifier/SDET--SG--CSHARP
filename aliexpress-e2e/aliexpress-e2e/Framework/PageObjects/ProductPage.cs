@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using aliexpress_e2e.Framework.Utilities;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,22 @@ namespace aliexpress_e2e.Framework.PageObjects
         IWebDriver driver;
         String strQty;
         By qtyInStock = By.XPath("//div[@class='product-quantity-tip']");
+        By popUpInternalPages = By.ClassName("newuser-container");
+        By popUpCloseButtonInternalPages = By.ClassName("next-dialog-close");
 
         public ProductPage(IWebDriver driver) => this.driver = driver;
 
         public void ValidateStock()
         {
+            WaitUtilities.ExplicitlyWait(driver, popUpInternalPages);
+            try
+            {
+                driver.FindElement(popUpCloseButtonInternalPages).Click();
+            }
+            catch
+            {
+                Console.Write("Internal popup was not displayed, this is ok");
+            }
             strQty = driver.FindElement(qtyInStock).Text;
             strQty = strQty.Substring(0, 5);
             strQty = strQty.Replace("\\D+", "");

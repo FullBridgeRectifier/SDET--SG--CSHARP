@@ -28,7 +28,7 @@ namespace aliexpress_e2e.Framework
                 Assert.Fail("Error on type of browser at config file (App.config)");
             }
             driver.Url = ConfigurationManager.AppSettings["URL"];
-
+            driver.Manage().Window.Maximize();
         }
 
         [TearDown]
@@ -36,9 +36,5 @@ namespace aliexpress_e2e.Framework
         {
             driver.Quit();
         }
-
-
-
-
     }
 }

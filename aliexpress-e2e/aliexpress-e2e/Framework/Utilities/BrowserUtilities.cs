@@ -7,17 +7,16 @@ namespace aliexpress_e2e.Framework.Utilities
 {
     public class BrowserUtilities
     {
-
         static IWebDriver driver;
         public BrowserUtilities(IWebDriver Wdriver) => driver = Wdriver;
 
-        public static void SwitchToNewestTab()
+        public static void SwitchToNewestTab(IWebDriver driver)
         {
             var handles = driver.WindowHandles;
-            SwitchToWindowHandle(handles[handles.Count - 1]);
+            SwitchToWindowHandle(driver, handles[handles.Count - 1]);
         }
 
-        public static void SwitchToWindowHandle(string handle)
+        public static void SwitchToWindowHandle(IWebDriver driver, string handle)
         {
             driver.SwitchTo().Window(handle);
         }

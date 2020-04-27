@@ -11,13 +11,12 @@ namespace aliexpress_e2e.Framework.Utilities
         static IWebDriver driver;
         public WaitUtilities(IWebDriver Wdriver) => driver = Wdriver;
 
-        public static void WaitForPageToLoad(By elementLocator, int timeout = 10)
+        public static void WaitForPageToLoad(IWebDriver driver, By elementLocator, int timeout = 10)
         {
             try
             {
                 var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeout));
                 var element = driver.FindElement(elementLocator);
-                element.Click();
                 wait.Until(ExpectedConditions.StalenessOf(element));
             }
             catch (NoSuchElementException)
@@ -27,14 +26,26 @@ namespace aliexpress_e2e.Framework.Utilities
             }
         }
 
-        public static void FluentWait(String locator)
+        public static void FluentWait(IWebDriver driver, String locator)
         {
             DefaultWait<IWebDriver> fluentWait = new DefaultWait<IWebDriver>(driver);
             fluentWait.Timeout = TimeSpan.FromSeconds(5);
             fluentWait.PollingInterval = TimeSpan.FromMilliseconds(250);
             fluentWait.IgnoreExceptionTypes(typeof(NoSuchElementException));
-            fluentWait.Until(x => x.FindElement(By.ClassName(locator)));
-            
+            fluentWait.Until(x => x.FindElement(By.CssSelector(locator)));
+        }
+
+        public static void ExplicitlyWait(IWebDriver driver, By by)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(7));
+            try
+            {
+                wait.Until(ExpectedConditions.ElementIsVisible(by));
+            }
+            catch
+            {
+                Console.WriteLine("PopUp was not displayed, moving forward");
+            }
         }
     }
 }

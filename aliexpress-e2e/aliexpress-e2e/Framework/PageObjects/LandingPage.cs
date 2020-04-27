@@ -11,7 +11,7 @@ namespace aliexpress_e2e.Framework.PageObjects
         //Driver
         IWebDriver driver;
         //Locators        
-        By popUp = By.CssSelector("div[data-widget-cid='widget-21']");
+        By popUp = By.CssSelector("div[data-widget-cid='widget-20']");
         By searchBox = By.Id("search-key");
         By popUpCloseButton = By.ClassName("close-layer");
         By searchButton = By.ClassName("search-button");
@@ -20,12 +20,10 @@ namespace aliexpress_e2e.Framework.PageObjects
 
         public LandingPage(IWebDriver driver) => this.driver = driver;
 
-
-
         public void ClosePopUpIfShown()
         {
 
-            WaitUtilities.FluentWait(popUp.ToString());
+            WaitUtilities.ExplicitlyWait(driver,popUp);
             try
             {
                 driver.FindElement(popUpCloseButton).Click();
@@ -34,7 +32,6 @@ namespace aliexpress_e2e.Framework.PageObjects
             {
                 Console.WriteLine("Popup was not displayed by the website, this is ok.");
             }
-                 
         }
 
         public void SearchItem(String item)
@@ -54,6 +51,7 @@ namespace aliexpress_e2e.Framework.PageObjects
             if (driver.FindElement(searchButton).Displayed)
             {
                 driver.FindElement(searchButton).Click();
+                WaitUtilities.ExplicitlyWait(driver, popUpInternalPages);                
                 try
                 {
                     driver.FindElement(popUpCloseButtonInternalPages).Click();
@@ -68,8 +66,5 @@ namespace aliexpress_e2e.Framework.PageObjects
                 Assert.Fail("could not send text to the website, verify textbox");
             }
         }
-
-
-
     }
 }

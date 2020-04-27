@@ -11,9 +11,8 @@ namespace aliexpress_e2e.Tests.AliExpress
     [TestFixture]
     public class AliExpressTests : Base
     {
-
         [Test]
-        public static void Aliexpress_E2E()
+        public static void Aliexpress_E2E_Stock()
         {
             LandingPage landing = new LandingPage(driver);            
             landing.ClosePopUpIfShown();
@@ -23,12 +22,8 @@ namespace aliexpress_e2e.Tests.AliExpress
             search.NavigateToSecondPage();
             search.ClickProduct();
             ProductPage product = new ProductPage(driver);
-            BrowserUtilities.SwitchToNewestTab();
+            BrowserUtilities.SwitchToNewestTab(driver);
             product.ValidateStock();
         }
-
-
-
-
     }
 }
