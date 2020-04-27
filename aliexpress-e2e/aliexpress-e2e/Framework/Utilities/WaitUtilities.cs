@@ -26,5 +26,15 @@ namespace aliexpress_e2e.Framework.Utilities
                 throw;
             }
         }
+
+        public static void FluentWait(String locator)
+        {
+            DefaultWait<IWebDriver> fluentWait = new DefaultWait<IWebDriver>(driver);
+            fluentWait.Timeout = TimeSpan.FromSeconds(5);
+            fluentWait.PollingInterval = TimeSpan.FromMilliseconds(250);
+            fluentWait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+            fluentWait.Until(x => x.FindElement(By.ClassName(locator)));
+            
+        }
     }
 }

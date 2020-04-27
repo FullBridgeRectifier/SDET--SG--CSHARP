@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using aliexpress_e2e.Framework.Utilities;
+
 
 namespace aliexpress_e2e.Framework.PageObjects
 {
@@ -20,14 +20,21 @@ namespace aliexpress_e2e.Framework.PageObjects
 
         public LandingPage(IWebDriver driver) => this.driver = driver;
 
+
+
         public void ClosePopUpIfShown()
         {
-            if (driver.FindElement(popUp).Displayed)
+
+            WaitUtilities.FluentWait(popUp.ToString());
+            try
             {
                 driver.FindElement(popUpCloseButton).Click();
             }
-            else
+            catch
+            {
                 Console.WriteLine("Popup was not displayed by the website, this is ok.");
+            }
+                 
         }
 
         public void SearchItem(String item)

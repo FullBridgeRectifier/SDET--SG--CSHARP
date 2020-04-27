@@ -8,6 +8,7 @@ using System.Text;
 
 namespace aliexpress_e2e.Tests.AliExpress 
 {
+    [TestFixture]
     public class AliExpressTests : Base
     {
 

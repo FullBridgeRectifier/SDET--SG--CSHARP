@@ -16,11 +16,11 @@ namespace aliexpress_e2e.Framework
         [SetUp]
         public void InitializeBrowser()
         {
-            if (ConfigurationManager.AppSettings["Website"] == "CHROME")
+            if (ConfigurationManager.AppSettings["browser"] == "CHROME")
             {
                 driver = new ChromeDriver();
             }
-            else if (ConfigurationManager.AppSettings["Website"] == "FIREFOX")
+            else if (ConfigurationManager.AppSettings["browser"] == "FIREFOX")
             {
                 driver = new FirefoxDriver();
             }else
