@@ -50,7 +50,7 @@ namespace aliexpress_e2e.Framework.PageObjects
                 driver.FindElement(searchButton).Click();
                 try
                 {
-                    driver.FindElement(popUpInternalPages).Click();
+                    driver.FindElement(popUpCloseButtonInternalPages).Click();
                 }
                 catch
                 {
