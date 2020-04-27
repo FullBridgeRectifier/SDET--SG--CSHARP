@@ -11,7 +11,7 @@ namespace aliexpress_e2e.Framework
 {
     public class Base
     {
-        IWebDriver driver;
+        public static IWebDriver driver;
 
         [SetUp]
         public void InitializeBrowser()
@@ -29,6 +29,12 @@ namespace aliexpress_e2e.Framework
             }
             driver.Url = ConfigurationManager.AppSettings["URL"];
 
+        }
+
+        [TearDown]
+        public void DestroyBrowser()
+        {
+            driver.Quit();
         }
 
 

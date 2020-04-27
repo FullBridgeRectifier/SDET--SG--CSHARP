@@ -8,7 +8,6 @@ namespace aliexpress_e2e.Framework.PageObjects
 {
     public class LandingPage
     {
-
         //Driver
         IWebDriver driver;
         //Locators        
