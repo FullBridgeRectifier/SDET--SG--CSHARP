@@ -4,3 +4,6 @@
 
 /aliexpress-e2e/.vs/aliexpress-e2e/v16
 /aliexpress-e2e/aliexpress-e2e/obj
+
+/bin/
+/aliexpress-e2e/aliexpress-e2e/bin/Debug/netcoreapp3.1
