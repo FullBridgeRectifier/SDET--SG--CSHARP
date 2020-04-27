@@ -1,0 +1,6 @@
+/target/
+/test-output/
+/.vs/
+
+/aliexpress-e2e/.vs/aliexpress-e2e/v16
+/aliexpress-e2e/aliexpress-e2e/obj
