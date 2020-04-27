@@ -9,7 +9,7 @@ using OpenQA.Selenium.Firefox;
 
 namespace aliexpress_e2e.Framework
 {
-    class Base
+    public class Base
     {
         IWebDriver driver;
 
@@ -27,7 +27,7 @@ namespace aliexpress_e2e.Framework
             {
                 Assert.Fail("Error on type of browser at config file (App.config)");
             }
-
+            driver.Url = ConfigurationManager.AppSettings["URL"];
 
         }
 
