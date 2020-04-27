@@ -29,7 +29,7 @@ namespace aliexpress_e2e.Framework.PageObjects
                 Console.Write("Internal popup was not displayed, this is ok");
             }
             strQty = driver.FindElement(qtyInStock).Text;
-            strQty = strQty.Substring(0, 5);
+            strQty = strQty.Substring(0, 2);
             strQty = strQty.Replace("\\D+", "");
             if(int.Parse(strQty) > 0)
             {
