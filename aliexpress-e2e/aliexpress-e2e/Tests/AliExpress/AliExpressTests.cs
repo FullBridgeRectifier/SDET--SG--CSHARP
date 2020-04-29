@@ -24,6 +24,9 @@ namespace aliexpress_e2e.Tests.AliExpress
             ProductPage product = new ProductPage(driver);
             BrowserUtilities.SwitchToNewestTab(driver);
             product.ValidateStock();
+            product.BuyNowFlow();
         }
     }
+
+    test
 }

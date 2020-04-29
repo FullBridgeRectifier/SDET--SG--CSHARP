@@ -24,6 +24,7 @@ namespace aliexpress_e2e.Framework.PageObjects
             {
                 IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
                 js.ExecuteScript("window.scrollBy(0,13000)");
+                WaitUtilities.ExplicitlyWait(driver, nextPageButton);
                 driver.FindElement(nextPageButton).Click();
             }
             catch (Exception e)

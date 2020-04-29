@@ -34,6 +34,7 @@ namespace aliexpress_e2e.Framework
         [TearDown]
         public void DestroyBrowser()
         {
+            driver.Close();
             driver.Quit();
         }
     }

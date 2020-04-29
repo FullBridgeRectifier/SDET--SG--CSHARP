@@ -22,7 +22,7 @@ namespace aliexpress_e2e.Framework.Utilities
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Element with locator: '" + elementLocator + "' was not found in current context page.");
-                throw;
+                
             }
         }
 
@@ -44,7 +44,7 @@ namespace aliexpress_e2e.Framework.Utilities
             }
             catch
             {
-                Console.WriteLine("PopUp was not displayed, moving forward");
+                Console.WriteLine("Element was not displayed, moving forward");
             }
         }
     }

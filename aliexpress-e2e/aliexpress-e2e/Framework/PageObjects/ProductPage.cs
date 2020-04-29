@@ -3,6 +3,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace aliexpress_e2e.Framework.PageObjects
@@ -14,6 +15,9 @@ namespace aliexpress_e2e.Framework.PageObjects
         By qtyInStock = By.XPath("//div[@class='product-quantity-tip']");
         By popUpInternalPages = By.ClassName("newuser-container");
         By popUpCloseButtonInternalPages = By.ClassName("next-dialog-close");
+        By itemsToIterate = By.CssSelector("div[class='sku-title']");
+        By buyNowButton = By.CssSelector("button[class*=buynow");
+        By aliLogin = By.CssSelector("div[class=next-dialog-body");
 
         public ProductPage(IWebDriver driver) => this.driver = driver;
 
@@ -39,6 +43,13 @@ namespace aliexpress_e2e.Framework.PageObjects
             {
                 Assert.Fail("Product is not in stock");
             }
+        }
+
+        public void BuyNowFlow()
+        {
+            ReadOnlyCollection<IWebElement> listOfPresentElements = driver.FindElements(itemsToIterate);
+            Console.WriteLine(listOfPresentElements);
+
         }
     }
 }
