@@ -9,8 +9,8 @@ using System.Text;
 namespace aliexpress_e2e.Tests.AliExpress 
 {
     [TestFixture]
-    public class AliExpressTests : Base
-    {
+     class AliExpressTests : Base
+     {
         [Test]
         public static void Aliexpress_E2E_Stock()
         {
@@ -26,7 +26,5 @@ namespace aliexpress_e2e.Tests.AliExpress
             product.ValidateStock();
             product.BuyNowFlow();
         }
-    }
-
-    test
+     }
 }

@@ -9,7 +9,7 @@ using OpenQA.Selenium.Firefox;
 
 namespace aliexpress_e2e.Framework
 {
-    public class Base
+    abstract class Base
     {
         public static IWebDriver driver;
 
