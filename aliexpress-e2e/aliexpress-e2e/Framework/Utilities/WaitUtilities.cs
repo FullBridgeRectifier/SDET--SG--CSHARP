@@ -3,6 +3,7 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace aliexpress_e2e.Framework.Utilities
 {
@@ -46,6 +47,8 @@ namespace aliexpress_e2e.Framework.Utilities
             {
                 Console.WriteLine("Element was not displayed, moving forward");
             }
+            Thread.Sleep(1500);
         }
+
     }
 }

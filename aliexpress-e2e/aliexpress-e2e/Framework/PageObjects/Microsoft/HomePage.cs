@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using aliexpress_e2e.Framework.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
@@ -11,8 +12,10 @@ namespace aliexpress_e2e.Framework.PageObjects.Microsoft
 {
     class HomePage
     {
-
-        private IWebDriver driver;
+        //WaitSelectors
+        By UpperMenu365By = By.XPath("//a[@id='shellmenu_0']");
+        //IWebDriver
+        IWebDriver driver;
         //Selectors
         [FindsBy(How = How.XPath, Using = "//a[@id='shellmenu_0']")]
         public IWebElement UpperMenu365 { get; set; }
@@ -28,11 +31,13 @@ namespace aliexpress_e2e.Framework.PageObjects.Microsoft
         public IWebElement UpperMenuDeales { get; set; }
         [FindsBy(How = How.XPath, Using = "//a[@id='l1_support']")]
         public IWebElement UpperMenuSupport { get; set; }
+        public HomePage(IWebDriver driver) => this.driver = driver;
 
         public void ValidateMenu()
         {
             try
             {
+                WaitUtilities.ExplicitlyWait(driver, UpperMenu365By);
                 if (UpperMenu365.Displayed && UpperMenuOffice.Displayed &&
                UpperMenuWindows.Displayed && UpperMenuSurface.Displayed
                && UpperMenuXbox.Displayed && UpperMenuDeales.Displayed
@@ -49,7 +54,6 @@ namespace aliexpress_e2e.Framework.PageObjects.Microsoft
                 Console.WriteLine("StaleElement exception thrown, execution will halt, verify logic " + e);
                 Assert.Fail("StaleElement exception thrown, execution will halt, verify logic " + e);
             }
-
         }
 
         public void UseMenu(string menu)
@@ -104,9 +108,6 @@ namespace aliexpress_e2e.Framework.PageObjects.Microsoft
                 {
                     Assert.Fail("The requested element: " + UpperMenu365.Text + " was not visible dumping stacktrace: " + e);
                 }
-
-
-
         }
     }
 }
